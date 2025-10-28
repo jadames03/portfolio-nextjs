@@ -1,6 +1,6 @@
 # Portfolio Projects
 
-Admin-managed project showcase built with Next.js App Router, TypeScript, Tailwind CSS, and Prisma (SQLite).
+Admin-managed project showcase built with Next.js App Router, TypeScript, Tailwind CSS, and Prisma (Neon Postgres).
 
 ## Features
 - Filterable public homepage with tabs for All, Development, Design, and AI projects.
@@ -26,6 +26,8 @@ cp .env.example .env
 ```
 
 ### Database
+
+Point `DATABASE_URL` at your Neon Postgres instance, then run:
 
 ```bash
 npx prisma migrate dev --name init
@@ -64,7 +66,7 @@ All admin routes require Basic Auth credentials defined by `ADMIN_USER` and `ADM
 ## Tech Stack
 - **Next.js 14** (App Router, TypeScript)
 - **Tailwind CSS** for styling
-- **Prisma** ORM with SQLite
+- **Prisma** ORM with Neon Postgres
 - **lucide-react** icon set
 
 ## Notes
