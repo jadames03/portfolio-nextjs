@@ -14,6 +14,7 @@ model Project {
   shortDesc String
   coverUrl  String?
   body      String?
+  projectUrl String?
   tags      Tag[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

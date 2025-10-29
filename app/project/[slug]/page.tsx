@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "../../../lib/prisma";
 import { TagPill } from "../../../components/TagPill";
@@ -48,14 +49,33 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
       {project.coverUrl ? (
         <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
-          <Image
-            src={project.coverUrl}
-            alt={`${project.title} cover`}
-            fill
-            className="object-cover"
-            priority
-            sizes="(max-width: 768px) 100vw, 70vw"
-          />
+          {project.projectUrl ? (
+            <Link
+              href={project.projectUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative block h-full w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+            >
+              <Image
+                src={project.coverUrl}
+                alt={`${project.title} cover`}
+                fill
+                className="object-cover transition duration-300 group-hover:scale-[1.01]"
+                priority
+                sizes="(max-width: 768px) 100vw, 70vw"
+              />
+              <span className="sr-only">Visit project</span>
+            </Link>
+          ) : (
+            <Image
+              src={project.coverUrl}
+              alt={`${project.title} cover`}
+              fill
+              className="object-cover"
+              priority
+              sizes="(max-width: 768px) 100vw, 70vw"
+            />
+          )}
         </div>
       ) : null}
 

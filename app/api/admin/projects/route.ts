@@ -19,6 +19,15 @@ const projectSchema = z.object({
       (value) => !value || /^https?:\/\//i.test(value),
       "Cover URL must start with http:// or https://"
     ),
+  projectUrl: z
+    .string()
+    .trim()
+    .optional()
+    .transform((value) => value ?? "")
+    .refine(
+      (value) => !value || /^https?:\/\//i.test(value),
+      "Project URL must start with http:// or https://"
+    ),
   body: z
     .string()
     .max(5000, "Body must be under 5000 characters.")
@@ -76,6 +85,7 @@ export async function POST(request: NextRequest) {
         slug: data.slug,
         shortDesc: data.shortDesc,
         coverUrl: data.coverUrl ? data.coverUrl : null,
+        projectUrl: data.projectUrl ? data.projectUrl : null,
         body: data.body?.trim() ? data.body : null,
         tags: {
           connect: data.tagIds.map((id) => ({ id }))

@@ -14,6 +14,7 @@ type AdminProjectFormProps = {
     slug: string;
     shortDesc: string;
     coverUrl: string | null;
+    projectUrl: string | null;
     body: string | null;
     tags: { id: string; name: string; slug: string }[];
   };
@@ -26,6 +27,7 @@ type ProjectPayload = {
   slug: string;
   shortDesc: string;
   coverUrl: string;
+  projectUrl: string;
   body: string;
   tagIds: string[];
 };
@@ -35,6 +37,7 @@ const EMPTY_PAYLOAD: ProjectPayload = {
   slug: "",
   shortDesc: "",
   coverUrl: "",
+  projectUrl: "",
   body: "",
   tagIds: []
 };
@@ -52,6 +55,7 @@ export function AdminProjectForm({ mode, tags, project }: AdminProjectFormProps)
       slug: project.slug,
       shortDesc: project.shortDesc,
       coverUrl: project.coverUrl ?? "",
+      projectUrl: project.projectUrl ?? "",
       body: project.body ?? "",
       tagIds: project.tags.map((tag) => tag.id)
     };
@@ -92,6 +96,7 @@ export function AdminProjectForm({ mode, tags, project }: AdminProjectFormProps)
     const payload = {
       ...formState,
       coverUrl: formState.coverUrl.trim() || "",
+      projectUrl: formState.projectUrl.trim() || "",
       body: formState.body.trim(),
       shortDesc: formState.shortDesc.trim()
     };
@@ -199,6 +204,21 @@ export function AdminProjectForm({ mode, tags, project }: AdminProjectFormProps)
           placeholder="https://"
         />
         {errors.coverUrl ? <p className="text-xs text-red-400">{errors.coverUrl}</p> : null}
+      </section>
+
+      <section className="space-y-2">
+        <label htmlFor="projectUrl" className="text-sm font-medium text-slate-200">
+          Project URL
+        </label>
+        <input
+          id="projectUrl"
+          name="projectUrl"
+          value={formState.projectUrl}
+          onChange={handleChange("projectUrl")}
+          className="w-full rounded-lg border border-slate-700 bg-slate-900/60 px-3 py-2 text-sm text-slate-100 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/40"
+          placeholder="https://"
+        />
+        {errors.projectUrl ? <p className="text-xs text-red-400">{errors.projectUrl}</p> : null}
       </section>
 
       <section className="space-y-2">

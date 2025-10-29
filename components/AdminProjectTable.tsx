@@ -12,6 +12,7 @@ type AdminProject = {
   slug: string;
   shortDesc: string;
   createdAt: string;
+  projectUrl: string | null;
   tags: { id: string; name: string; slug: string }[];
 };
 

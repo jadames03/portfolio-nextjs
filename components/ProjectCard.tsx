@@ -10,6 +10,7 @@ type ProjectCardProps = {
     slug: string;
     shortDesc: string;
     coverUrl: string | null;
+    projectUrl: string | null;
     tags: { id: string; name: string; slug: string }[];
   };
 };
