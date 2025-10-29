@@ -4,6 +4,10 @@
 
 :root {
   color-scheme: dark;
+  --panel: #071426;
+  --green-primary: #00FF41;
+  --green-accent: #7CFF00;
+
 }
 
 body {

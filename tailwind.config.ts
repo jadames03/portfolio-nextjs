@@ -11,7 +11,10 @@ const config: Config = {
       colors: {
         background: "rgb(15, 23, 42)",
         surface: "rgb(15, 23, 42)",
-        foreground: "rgb(248, 250, 252)"
+        foreground: "rgb(248, 250, 252)",
+        panel: "rgb(7, 20, 38)",
+        "green-primary": "rgb(0, 255, 65)",
+        "green-accent": "rgb(124, 255, 0)"
       },
       container: {
         center: true,
